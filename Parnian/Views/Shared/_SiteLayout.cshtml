@@ -1,0 +1,113 @@
+﻿@{
+    string[] desired = { "Name", "Background", "Logo", "Slogan", "Description", "Keywords" };
+    string[] Settings = MvcApplication.GetSettings(desired);
+    List<Parnian.Models.Category> MenuItems = MvcApplication.GetMenuItems();
+    List<Parnian.Models.Slide> Slides = MvcApplication.GetSlides();
+}
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow" />
+    <meta name="description" content="@Settings[4]" />
+    <meta name="keywords" content="@Settings[5]" />
+    <title>@ViewBag.Title | @Settings[0]</title>
+    <link href="~/Content/dinar-font/dinar.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap@3.3.5/css/bootstrap-my-rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/lightslider@1.1.5/css/lightslider.min.css" rel="stylesheet" />
+    <link href="~/Content/parnian/css/site.min.css?v=1" rel="stylesheet" />
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <div class="container container-all">
+        <header class="row">
+            <section id="head" class="col-sm-3 hidden-xs">
+                <a href="@Url.Action("Index","Home")"><div id="logo"></div></a>
+                <h1 id="title"><a href="@Url.Action("Index","Home")">@Settings[3]</a></h1>
+            </section>
+            <nav class="navbar navbar-my-theme">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink(Settings[0], "Index", "Home", new { area = "" }, new { @class = "navbar-brand hidden-lg hidden-md hidden-sm" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("درباره‌ی ما", "About", "Home")</li>
+                            @foreach (var item in MenuItems)
+                            {
+                                <li>@Html.ActionLink(item.title, "Gallery", new { id = item.id })</li>
+                            }
+                            <li>@Html.ActionLink("تماس با ما", "Contact", "Home")</li>
+                            <li class="pull-left">@Html.ActionLink("مدیریت", "Index", "Manage")</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section class="row">
+            <div class="col-sm-12 slider-container">
+                <ul id="slider" class="cS-hidden">
+                    @foreach (var slide in Slides)
+                    {
+                        <li class="slide">
+                            <a href="@slide.url">
+                                <img class="slide-img" src="@slide.imageName" title="@slide.title" alt="@slide.title" />
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </section>
+
+        @RenderBody()
+    </div>
+
+    <div class="container">
+        <footer class="row">
+            <div class="col-sm-3 col-xs-6">
+                <h4>دفتر مؤسسه‌ی پرنیان</h4>
+                <address>
+                    نشانی:
+                    تهران، خیابان انقلاب، خیابان ابوریحان، خیابان نظری، پلاک ۳۶، طبقه‌ی ۴.
+                    <br />
+                    همراه: 09123496639
+                    <br />
+                    تلفن: 66476560
+                    <br />
+                    رایانامه: <a href="mailto:info@parnianart.com">info@parnianart.com</a>
+                    <br />
+                    رایانامه: <a href="mailto:group_parnian@yahoo.com">group_parnian@yahoo.com</a>
+                </address>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <h4>ایده‌های خلاقانه</h4>
+                <p>
+                    مؤسسه‌ی پرنیان آماده‌ی دریافت طرح‌ها و ایده‌های خلاقانه‌ی جوانان هنرمند در زمینه‌های فرهنگی هنری و تبلیغاتی بوده
+                    و در صورت تایید، می‌توانند با حمایت مؤسسه‌ی پرنیان نسبت به ساخت و اجرای طرح خود اقدام نمایند.
+                </p>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <h4>شبکه‌های اجتماعی</h4>
+                <address>
+                    <span class="telegram-icon" title="تلگرام"></span>
+                    <a href="https://telegram.me/parnian_art_culture">موسسه‌ی فرهنگی پرنیان</a>
+                </address>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/Content/jquery@2.1.4/jquery.min.js"></script>
+    <script src="~/Content/bootstrap@3.3.5/js/bootstrap.min.js"></script>
+    <script src="~/Content/lightslider@1.1.5/js/lightslider.min.js"></script>
+    <script src="~/Content/parnian/js/site.min.js?v=1"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

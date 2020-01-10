@@ -1,0 +1,41 @@
+﻿@model Parnian.Models.Journal
+
+@{ ViewBag.Title = Model.title; }
+
+@section head{
+    <style>
+        .journal-container {
+            margin-bottom: 10px;
+        }
+
+        .journal-img > img {
+            display: block;
+            margin: auto;
+        }
+
+        .journal-title {
+            margin-top: 0;
+        }
+    </style>
+}
+
+<main class="row">
+    <section class="col-sm-12 heading">
+        <h2>@Model.title</h2>
+    </section>
+    <article class="col-sm-12 journal-container">
+        <div class="row journal">
+            <div class="col-sm-6 journal-img">
+                <img src="@(Url.Action("Thumbnail", new { path = Model.imageName, width = 471 }))" alt="@Model.title" />
+            </div>
+            <div class="col-sm-6 journal-desc-container">
+                <div class="journal-desc">
+                    @Html.Raw(WebUtility.HtmlDecode(Model.excerpt))
+                </div>
+            </div>
+            <div class="col-sm-10 col-sm-offset-1">
+                @Html.Raw(WebUtility.HtmlDecode(Model.description))
+            </div>
+        </div>
+    </article>
+</main>

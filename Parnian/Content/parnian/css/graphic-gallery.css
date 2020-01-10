@@ -1,0 +1,45 @@
+﻿.graphic-container {
+    margin-bottom: 10px;
+    height: 370px;
+}
+
+.graphic {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: #F4F4F4;
+}
+
+.graphic-image {
+    margin: auto;
+}
+
+.graphic-image > img {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 4px;
+    cursor: zoom-in;
+}
+
+.graphic-title {
+    height: 30px;
+    min-height: 30px;
+    margin: 10px 0;
+}
+
+.graphic-title p {
+    height: inherit;
+    margin: 0;
+    padding: 4px;
+    line-height: 30px;
+}
+
+.graphic-desc {
+    height: 60px;
+    padding: 0 4px 10px 4px;
+    font-size: 12px;
+    overflow: hidden;
+}

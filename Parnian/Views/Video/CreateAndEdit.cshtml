@@ -1,0 +1,99 @@
+﻿@model Parnian.Models.Video
+@{
+    Layout = "~/Views/Shared/_ModelCreateAndEditLayout.cshtml";
+    ViewBag.Object_Name = "ویدئو";
+    ViewBag.Object_Plural_Name = "ویدئوها";
+    ViewBag.Root_Directory = "/App_Files/Videos/";
+    ViewBag.Sidebar_Location = "videos";
+    ViewBag.hasImage = true;
+    ViewBag.imageWarning = "عکس باید ۶۴۰ در ۳۶۰ پیکسل باشد.";
+}
+
+<div class="form-group">
+    @Html.LabelFor(model => model.categoryId, htmlAttributes: new { @class = "control-label col-sm-2" })
+    <div class="col-sm-10">
+        @Html.DropDownList("categoryId", null, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-12">
+        <p class="alert alert-warning">
+            ابعاد تمام ویدئوها باید ۶۴۰ در ۳۶۰ پیکسل باشد.
+        </p>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-2">
+        <button class="btn btn-primary select-video" type="button" id="select-m4v" data-input="#videoName_M4V">فایل M4V</button>
+    </div>
+    <div class="col-sm-10">
+        @Html.EditorFor(model => model.videoName_M4V, new { htmlAttributes = new { @class = "form-control", dir = "ltr" } })
+        @Html.ValidationMessageFor(model => model.videoName_M4V, "", new { @class = "text-danger" })
+        <p class="alert alert-warning">فرمت m4v و کدک H.264. این فایل الزامیست و اگر نباشد ویدئو در بسیاری از مرورگرها از جمله کروم پخش نخواهد شد.</p>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-2">
+        <button class="btn btn-primary select-video" type="button" id="select-webm" data-input="#videoName_WebM">فایل WebM</button>
+    </div>
+    <div class="col-sm-10">
+        @Html.EditorFor(model => model.videoName_WebM, new { htmlAttributes = new { @class = "form-control", dir = "ltr" } })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-2">
+        <button class="btn btn-primary select-video" type="button" id="select-ogg" data-input="#videoName_Ogg">فایل Ogg</button>
+    </div>
+    <div class="col-sm-10">
+        @Html.EditorFor(model => model.videoName_Ogg, new { htmlAttributes = new { @class = "form-control", dir = "ltr" } })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-2">
+        <button class="btn btn-primary select-video" type="button" id="select-mp4" data-input="#videoName_MP4">فایل MP4</button>
+    </div>
+    <div class="col-sm-10">
+        @Html.EditorFor(model => model.videoName_MP4, new { htmlAttributes = new { @class = "form-control", dir = "ltr" } })
+        <p class="alert alert-warning">فرمت این فایل باید mp4 باشد نه m4v</p>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            var _kfmUrl = "@Url.Action("_Partial", "FileManager", new { area = "Kaveh" })";
+            var _rootDierctory = "@ViewBag.Root_Directory";
+
+            $(".select-video").on("click", function () {
+                var $modal = $("#kfm-modal"),
+                    $input = $($(this).attr("data-input"));
+
+                $("#kfm-wrapper").load(_kfmUrl, function () {
+                    kfm = new KavehFileManager({
+                        // initialize
+                        closeAfterSelect: true,
+                        home: _rootDierctory,
+                        id: "kaveh",
+                        selectFile: false,
+                        modalId: "kfm-modal",
+                        onchoose: function (list) {
+                            var file = list[0];
+                            $input.val(file.path);
+                            $modal.modal("hide");
+                        },
+                        oncancel: function () {
+                            $modal.modal("hide");
+                        }
+                    });
+                });
+
+                $modal.modal("show");
+            });
+        });
+    </script>
+}

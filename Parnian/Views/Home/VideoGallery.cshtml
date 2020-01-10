@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Parnian.Models.Video>
+
+@*@{ string root = "/App_Files/Videos/"; }*@
+
+@section head{
+    <link href="~/Content/parnian/css/video-gallery.min.css?v=1" rel="stylesheet" />
+}
+<main class="row">
+    <section class="col-sm-12 heading">
+        <h2>@ViewBag.Title</h2>
+        @if (Model.Count() == 0)
+        {
+            <p class="text-muted">چیزی در این دسته نیست</p>
+        }
+    </section>
+    @foreach (var video in Model)
+    {
+        <article class="col-sm-6 video-container">
+            <div class="video">
+                <div class="video-img" data-toggle="modal" data-target="#videoModal" data-video='{"title":"@video.title","poster":"@(string.IsNullOrWhiteSpace(video.imageName) ? "/App_Files/videos/no-poster.jpg" : video.imageName)","m4v":"@video.videoName_M4V","webm":"@video.videoName_WebM","ogg":"@video.videoName_Ogg","mp4":"@video.videoName_MP4"}'>
+                    <img src="@(string.IsNullOrWhiteSpace(video.imageName) ? "/App_Files/Videos/no-poster.jpg" : Url.Action("Thumbnail", new { path = video.imageName, width = 337 }))" alt="@video.title" />
+                </div>
+                <div class="video-desc-container">
+                    <h3 class="video-title">@video.title</h3>
+                    <div class="video-desc">
+                        @Html.Raw(WebUtility.HtmlDecode(video.description))
+                    </div>
+                </div>
+            </div>
+        </article>
+    }
+</main>
+
+<div class="modal fade" role="dialog" id="videoModal">
+    <div class="modal-dialog modal-my-size" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="بستن"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <video controls="controls" preload="metadata" poster="">
+                                <source src="" id="m4v" type="video/mp4" />
+                                <source src="" id="webm" type="video/webm" />
+                                <source src="" id="ogg" type="video/ogg" />
+                                <source src="" id="mp4" />
+                            </video>
+                        </div>
+                        <div class="col-sm-12" id="video-desc"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#videoModal").on("show.bs.modal", function (event) {
+                var relatedTarget =  $(event.relatedTarget),
+                    videoData = relatedTarget.data("video"),
+                    root = "",
+                    video = $("video");
+                $(this).find(".modal-title").html(videoData.title);
+                $(this).find("#video-desc").html(function () {
+                    return relatedTarget.siblings(".video-desc-container").find(".video-desc").html();
+                });
+                video.attr("poster", root + videoData.poster);
+                $("#m4v").attr("src", root + videoData.m4v);
+                if (videoData.webm != null && videoData.webm !== "") $("#webm").attr("src", root + videoData.webm);
+                if (videoData.ogg != null && videoData.ogg !== "") $("#ogg").attr("src", root + videoData.ogg);
+                if (videoData.mp4 != null && videoData.mp4 !== "") $("#mp4").attr("src", root + videoData.mp4);
+
+                video.get(0).load();
+            }).on("hidden.bs.modal", function () {
+                $(this).find(".modal-title").html("");
+                $("video").get(0).pause();
+                $("video").attr("poster", "");
+                $("#m4v").attr("src", "");
+                $("#webm").attr("src", "");
+                $("#ogg").attr("src", "");
+                $("#mp4").attr("src", "");
+            });
+        });
+    </script>
+}

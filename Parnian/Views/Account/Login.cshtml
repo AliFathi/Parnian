@@ -1,0 +1,40 @@
+﻿@model Parnian.Models.LoginViewModel
+
+@{ ViewBag.Title = "ورود"; }
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { autofill = "false" }))
+{
+    <h2 class="form-heading">ورود</h2>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <p class="text-danger">@Html.ValidationMessageFor(m => m.Username)</p>
+    <p class="text-danger">@Html.ValidationMessageFor(m => m.Password)</p>
+    @Html.AntiForgeryToken()
+    <div class="input-list-group">
+        <div class="input-group" title="نام کاربری">
+            @Html.LabelFor(m => m.Username, new { @class = "sr-only" })
+            <span class="input-group-addon" id="user"><span class="glyphicon glyphicon-user"></span></span>
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control rtl-placeholder", placeholder = "نام کاربری", aria_describedby = "user", dir = "ltr" })
+        </div>
+        <div class="input-group" title="رمز">
+            @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
+            <span class="input-group-addon" id="pass"><span class="glyphicon glyphicon-lock"></span></span>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control rtl-placeholder", placeholder = "رمز", aria_describedby = "pass", dir = "ltr" })
+        </div>
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.RememberMe)
+            @Html.LabelFor(m => m.RememberMe)
+        </label>
+    </div>
+    <div class="g-recaptcha" data-sitekey="@ViewBag.RecaptchaSiteKey"></div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">ورود</button>
+    <a class="btn btn-default btn-block" href="@Url.Action("ForgotPassword")">رمز خود را فراموش کرده‌اید؟</a>
+}
+
+@section scripts{
+    <script src="~/Content/jquery@2.1.4/jquery.min.js"></script>
+    <script src="~/Content/jquery.validate@1.14.0/jquery.validate.min.js"></script>
+    <script src="~/Content/jquery.validate.unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?hl=fa" async></script>
+}

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Parnian.Models.Graphic>
+
+@*@{ string root = "/App_Files/Graphics/"; }*@
+
+@section head{
+    <link href="~/Content/photoswipe@4.0.8/photoswipe.min.css" rel="stylesheet" />
+    <link href="~/Content/photoswipe@4.0.8/default-skin.min.css" rel="stylesheet" />
+    <link href="~/Content/parnian/css/graphic-gallery.min.css?v=1" rel="stylesheet" />
+}
+<main class="row">
+    <section class="col-sm-12 heading">
+        <h2>@ViewBag.Title</h2>
+        @if (Model.Count() == 0)
+        {
+            <p class="text-muted">چیزی در این دسته نیست</p>
+        }
+    </section>
+    @foreach (var graphic in Model)
+    {
+        <article class="col-md-fifth col-sm-4 col-xs-6 graphic-container">
+            <div class="graphic">
+                <div class="graphic-image" data-src="@graphic.imageName" data-size="@graphic.imageSize">
+                    <img src="@Url.Action("Thumbnail", new { path = graphic.imageName, width = 190 })" alt="@graphic.title" />
+                </div>
+                <div class="graphic-title">
+                    <p>@graphic.title</p>
+                </div>
+                <div class="graphic-desc">
+                    @Html.Raw(WebUtility.HtmlDecode(graphic.description))
+                </div>
+            </div>
+        </article>
+    }
+</main>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="خروج (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="تمام صفحه"></button>
+                <button class="pswp__button pswp__button--zoom" title="بزرگ/کوچک کردن"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="قبلی"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="بعدی"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/photoswipe@4.0.8/photoswipe.min.js"></script>
+    <script src="~/Content/photoswipe@4.0.8/photoswipe-ui-default.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var galleryHasStarted = false,
+                items = new Array();
+            $(".graphic-image").each(function (i, e) {
+                $(e).click(function () {
+                    if (!galleryHasStarted) {
+                        $(".graphic-image").each(function (index, element) {
+                            var src = $(element).attr("data-src"),
+                                size = $(element).attr("data-size").split("x"),
+                                item = {
+                                    src: src,
+                                    w: eval(size[0]),
+                                    h: eval(size[1])
+                                };
+
+                            items.push(item);
+                        });
+
+                        galleryHasStarted = true;
+                    }
+
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        options = {
+                            index: i,
+                            bgOpacity: 0.9,
+                            shareEl: false,
+                            clickToCloseNonZoomable: false,
+                        },
+                        gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.init();
+                });
+            });
+        });
+    </script>
+}

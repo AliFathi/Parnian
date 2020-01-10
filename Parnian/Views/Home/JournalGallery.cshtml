@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Parnian.Models.Journal>
+
+@*@{ string root = "/App_Files/Journals/"; }*@
+
+@section head{
+    <style>
+        .journal-container {
+            margin-bottom: 10px;
+        }
+
+        .journal-img > img {
+            display: block;
+            margin: auto;
+        }
+
+        .journal-title {
+            margin-top: 0;
+        }
+    </style>
+}
+
+<main class="row">
+    <section class="col-sm-12 heading">
+        <h2>@ViewBag.Title</h2>
+        @if (Model.Count() == 0)
+        {
+            <p class="text-muted">چیزی در این دسته نیست</p>
+        }
+    </section>
+    @foreach (var journal in Model)
+    {
+        <article class="col-sm-12 journal-container" id="@journal.id">
+            <div class="row journal">
+                <div class="col-sm-6 journal-img">
+                    <img src="@(Url.Action("Thumbnail", new { path = journal.imageName, width = 471 }))" alt="@journal.title" />
+                </div>
+                <div class="col-sm-6 journal-desc-container">
+                    <h3 class="journal-title"><a href="@Url.Action("Journal", new { id = journal.id })">@journal.title</a></h3>
+                    <div class="journal-desc">
+                        @Html.Raw(WebUtility.HtmlDecode(journal.excerpt))
+                    </div>
+                </div>
+            </div>
+        </article>
+    }
+</main>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Parnian.Models.Slide>
+@{
+    Layout = "~/Views/Shared/_ModelIndexLayout.cshtml";
+    ViewBag.Title = "‌اسلایدها";
+    ViewBag.hasImage = true;
+    ViewBag.Sidebar_Location = "slides";
+    ViewBag.Controller = "Slide";
+    ViewBag.Root_Directory = "/App_Files/Slides/";
+    ViewBag.Object_Name = "اسلاید";
+    var sortkey = ViewBag.sortkey;
+}
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <input type="checkbox" class="group-action" data-id="@item.id" />
+        </td>
+        <td class="handle" data-id="@item.id">@item.priority</td>
+        @if ((Boolean)ViewBag.hasImage)
+        {
+            <td class="thumbnail-holder">
+                <img src="@Url.Action("Thumbnail", "FileManager", new { area = "Kaveh", path = item.imageName, width = 36 })" alt="@item.title" />
+            </td>
+        }
+        <td>
+            @Html.ActionLink(Html.DisplayFor(modelItem => item.title).ToString(), "Edit", new { id = item.id }, new { title = "ویرایش" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isHidden)
+        </td>
+    </tr>
+}

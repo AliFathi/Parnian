@@ -1,0 +1,98 @@
+﻿@{
+    string[] desired = { "Name" };
+    string[] Settings = MvcApplication.GetSettings(desired);
+}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow" />
+    <title>@Settings[0]&nbsp;&raquo;&nbsp;@ViewBag.Title</title>
+    <link href="~/Content/vazir-font@18.0.0/vazir.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap@3.3.5/css/bootstrap-my-rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/parnian/css/admin.min.css?v=1" rel="stylesheet" />
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <header class="navbar navbar-admin navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink(Settings[0], "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <p class="navbar-text">
+                    شما با نام&nbsp;
+                    <a href="@Url.Action("Settings", "Manage")" class="navbar-link">@User.Identity.Name</a>
+                    &nbsp;وارد شده‌اید.
+                </p>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-left" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="javascript:document.getElementById('logoutForm').submit()"><span style="padding-left:5px;position:relative;top:3px;" class="glyphicon glyphicon-log-out"></span>خروج</a>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </header>
+    <aside>
+        <div class="row">
+            <ul class="nav">
+                <li id="li-dashboard" role="presentation"><a href="@Url.Action("Index", "Manage")"><span title="پیش‌خوان" class="glyphicon glyphicon-dashboard"></span>پیش‌خوان</a></li>
+                <li id="li-settings" role="presentation"><a href="@Url.Action("Settings", "Manage")"><span title="تنظیمات" class="glyphicon glyphicon-cog"></span>تنظیمات</a></li>
+                <li id="li-users" role="presentation"><a href="@Url.Action("Users", "Manage")"><span title="کاربران" class="glyphicon glyphicon-user"></span>کاربران</a></li>
+                <li id="li-file-manager" role="presentation"><a href="@Url.Action("FileManager", "Manage")"><span title="آمار بازدید" class="glyphicon glyphicon-folder-open"></span>مدیریت فایل</a></li>
+                @*<li id="li-stats" role="presentation"><a href="@Url.Action("Statistics", "Manage")"><span title="آمار بازدید" class="glyphicon glyphicon-stats"></span>آمار بازدید</a></li>*@
+            </ul>
+            <ul class="nav">
+                <li id="li-pages" role="presentation"><a href="@Url.Action("Index", "Page")"><span title="صفحات" class="glyphicon glyphicon-duplicate"></span>صفحات</a></li>
+                <li id="li-categories" role="presentation"><a href="@Url.Action("Index", "Category")"><span title="دسته‌ها" class="glyphicon glyphicon-tags"></span>دسته‌ها</a></li>
+                <li id="li-videos" role="presentation"><a href="@Url.Action("Index", "Video")"><span title="ویدئوها" class="glyphicon glyphicon-film"></span>ویدئوها</a></li>
+                <li id="li-journals" role="presentation"><a href="@Url.Action("Index", "Journal")"><span title="نوشته‌ها" class="glyphicon glyphicon-pencil"></span>نوشته‌ها</a></li>
+                <li id="li-graphics" role="presentation"><a href="@Url.Action("Index", "Graphic")"><span title="نگاره‌ها" class="glyphicon glyphicon-picture"></span>نگاره‌ها</a></li>
+                <li id="li-slides" role="presentation"><a href="@Url.Action("Index", "Slide")"><span title="اسلایدها" class="glyphicon glyphicon-transfer"></span>اسلایدها</a></li>
+            </ul>
+            <ul class="nav">
+                <li id="aside-toggle"><a><span title="تغییر حالت" class="glyphicon glyphicon-menu-hamburger"></span>تغییر حالت</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main>
+        <div class="row page-header">
+            <div class="col-sm-4 page-info">
+                <h1>@ViewBag.Title</h1>
+                <p class="text-muted">@ViewBag.Subtitle</p>
+            </div>
+            <div class="col-sm-8 page-tools">
+                @RenderSection("tools", required: false)
+            </div>
+        </div>
+        @RenderBody()
+    </main>
+
+    @RenderSection("bodyBeforeScripts", required: false)
+    <script src="~/Content/jquery@2.1.4/jquery.min.js"></script>
+    <script src="~/Content/bootstrap@3.3.5/js/bootstrap.min.js"></script>
+    <script src="~/Content/bootbox@4.4.0/bootbox.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#li-@ViewBag.Sidebar_Location").addClass("active");
+            $("#aside-toggle").click(function () {
+                $("aside").toggleClass("toggled");
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

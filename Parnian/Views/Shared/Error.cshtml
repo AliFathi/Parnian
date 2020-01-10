@@ -1,0 +1,18 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    ViewBag.Title = "خطا";
+}
+@section head{
+    <style>
+        body {
+            background-image: url(/App_Files/UI/error.jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    }
+<h1 class="text-danger">خطا</h1>
+<h2 class="text-danger">هنگام پردازش درخواست شما خطایی رخ داد.</h2>

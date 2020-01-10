@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/vazir-font@18.0.0/vazir.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap@3.3.5/css/bootstrap-my-rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/parnian/css/account.min.css?v=2" rel="stylesheet" />
+    @RenderSection("head", required: false)
+</head>
+<body class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            @RenderBody()
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

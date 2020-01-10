@@ -1,0 +1,859 @@
+﻿.kaveh {
+    position: fixed;
+    width: 815px;
+    box-sizing: content-box;
+    background-color: #252C33;
+    border: 1px solid #343C45;
+    z-index: 9999;
+}
+
+.kaveh * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    box-sizing: content-box;
+}
+
+.kaveh .k-toolbar {
+    height: 30px;
+    margin: 0 6px;
+}
+
+.kaveh .k-bar-btn {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin-left: 1px;
+    text-align: center;
+    line-height: 23px;
+    color: #B6B9BD;
+    cursor: pointer;
+}
+
+.kaveh .k-bar-btn:hover {
+    background-color: #1D4F73;
+    color: #EEF0F2;
+}
+
+.kaveh .k-bar-btn-close {
+    width: 45px;
+    background-color: #c75050;
+    color: #EEF0F2;
+    font-size: 8px;
+}
+
+.kaveh .k-bar-btn-close:hover {
+    background-color: #e04343;
+}
+
+/*content
+--------------------------------------------------------*/
+.kaveh .k-content {
+    width: 801px;
+    float: left;
+    border: 1px solid #343C45;
+    background-color: white;
+    margin: 0px 6px 6px 6px;
+}
+
+.kaveh .k-ribbon {
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid #343C45;
+    /**/
+    line-height: 30px;
+    padding: 0 5px;
+}
+/*adress bar
+--------------------------------------------------------*/
+.kaveh .k-address-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #EFEFEF;
+    /*background-color: #343C45;*/
+    border-bottom: 1px solid #343C45;
+}
+
+.history {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+}
+/*explorer
+--------------------------------------------------------*/
+.kaveh .k-explorer {
+    width: 100%;
+    height: 400px;
+    border-bottom: 1px solid #343C45;
+}
+/*pane
+--------------------------------------------------------*/
+.kaveh .k-pane {
+    width: 200px;
+    width: 157px;
+    height: 400px;
+    float: left;
+    overflow: auto;
+    border-right: 1px solid #343C45;
+}
+
+.kaveh .k-pane > div {
+    width: 100%;
+    min-width: 200px;
+    min-width: 157px;
+    min-height: 400px;
+    float: left;
+}
+
+.kaveh .k-directory {
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.kaveh .k-directory:hover {
+    background-color: #e5f3fb;
+    border-color: #26a0da;
+}
+/*box
+--------------------------------------------------------*/
+.kaveh .k-box {
+    width: 643px;
+    height: 400px;
+    float: left;
+    overflow: auto;
+}
+
+.kaveh .k-box > div {
+    width: 100%;
+    min-width: 625px;
+    min-height: 400px;
+    float: left;
+    padding-top: 10px;
+}
+
+.kaveh .k-box-msg {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    color: gray;
+}
+
+/*file
+--------------------------------------------------------*/
+.kaveh .k-file {
+    position: relative;
+    width: 103px;
+    min-height: 114px;
+    max-height: 160px;
+    border: 1px solid transparent;
+    margin: 0px 10px 1px 10px;
+    float: left;
+}
+
+.kaveh .k-file:hover {
+    background-color: #e5f3fb;
+    border-color: #26a0da;
+}
+
+.kaveh .k-file-icon {
+    position: relative;
+    width: 103px;
+    height: 90px;
+    margin: 3px 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+/* types */
+.kaveh .folder {
+    background-image: url("../kaveh/img/types/folder.png");
+}
+
+.kaveh .sound {
+    background-image: url("../kaveh/img/types/sound.png");
+}
+
+.kaveh .movie {
+    background-image: url("../kaveh/img/types/movie.png");
+}
+
+.kaveh .text {
+    background-image: url("../kaveh/img/types/text.png");
+}
+
+.kaveh .javascript {
+    background-image: url("../kaveh/img/types/javascript.png");
+}
+
+.kaveh .font {
+    background-image: url("../kaveh/img/types/font.png");
+}
+
+.kaveh .dll {
+    background-image: url("../kaveh/img/types/dll.png");
+}
+
+.kaveh .program {
+    background-image: url("../kaveh/img/types/program.png");
+}
+
+.kaveh .cshtml {
+    background-image: url("../kaveh/img/types/cshtml.png");
+}
+
+.kaveh .stylesheet {
+    background-image: url("../kaveh/img/types/stylesheet.png");
+}
+
+.kaveh .csharp {
+    background-image: url("../kaveh/img/types/cSharp.png");
+}
+
+.kaveh .config {
+    background-image: url("../kaveh/img/types/config.png");
+}
+
+.kaveh .pdf {
+    background-image: url("../kaveh/img/types/pdf.png");
+}
+
+.kaveh .other {
+    background-image: url("../kaveh/img/types/other.png");
+}
+/* image file */
+.kaveh .k-img-ctr {
+    position: absolute;
+    width: 103px;
+    bottom: 0;
+}
+
+.kaveh .k-img-ctr > img {
+    display: block;
+    margin: auto;
+    width: auto;
+    max-width: 90px;
+    height: auto;
+    max-height: 90px;
+    vertical-align: middle;
+    box-shadow: 0px 0px 5px gray;
+}
+/* file name */
+.kaveh .k-file-name {
+    width: 91px;
+    height: 64px;
+    padding: 0 6px;
+    text-align: center;
+    word-break: break-all;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* option list */
+.kaveh .k-optn-list {
+    position: absolute;
+    display: none;
+    width: 20px;
+    height: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #9b9b9b;
+    top: 0;
+    right: 0;
+    overflow: auto;
+}
+
+.kaveh .k-optn-list > div {
+    display: none;
+}
+
+.kaveh .k-file:hover .k-optn-list {
+    display: block;
+}
+
+.kaveh .k-optn-list:hover {
+    width: 101px;
+    height: 158px;
+}
+
+.kaveh .k-optn-list:hover > div {
+    display: block;
+}
+/* option item */
+.kaveh .k-optn-item {
+    padding: 2px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.kaveh .k-optn-item:hover {
+    background-color: #e5f3fb;
+    border-color: #26a0da;
+}
+
+/*footer
+--------------------------------------------------------*/
+.kaveh .k-footer {
+    width: 100%;
+    float: left;
+    background-color: #EFEFEF;
+    /*background-color: #343C45;*/
+}
+/*upload
+--------------------------------------------------------*/
+.kaveh .k-upload {
+    width: 100%;
+    float: left;
+}
+
+.kaveh .k-upload-limit {
+    padding: 2px 5px;
+    text-align: center;
+}
+
+.kaveh .k-message {
+    opacity: 0;
+    visibility: hidden;
+    background-color: #de8642;
+    padding: 2px 5px;
+    text-align: center;
+    -webkit-transition: all 1s ease-in-out 0s;
+    -moz-transition: all 1s ease-in-out 0s;
+    -o-transition: all 1s ease-in-out 0s;
+    transition: all 1s ease-in-out 0s;
+}
+
+.kaveh .k-message-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.kaveh .k-file-input,
+.kaveh .k-upload input[type=submit],
+.kaveh .k-upload progress,
+.kaveh .k-upload .k-progress {
+    float: right;
+}
+
+/* fonts
+=============================================================================================*/
+@font-face {
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot?-3p9i9y');
+    src: url('fonts/icomoon.eot?#iefix-3p9i9y') format('embedded-opentype'), url('fonts/icomoon.woff?-3p9i9y') format('woff'), url('fonts/icomoon.ttf?-3p9i9y') format('truetype'), url('fonts/icomoon.svg?-3p9i9y#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="k-icon-"], [class*=" k-icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.k-icon-home:before {
+    content: "\e900";
+}
+
+.k-icon-home2:before {
+    content: "\e901";
+}
+
+.k-icon-home3:before {
+    content: "\e902";
+}
+
+.k-icon-pencil:before {
+    content: "\e905";
+}
+
+.k-icon-pencil2:before {
+    content: "\e906";
+}
+
+.k-icon-quill:before {
+    content: "\e907";
+}
+
+.k-icon-pen:before {
+    content: "\e908";
+}
+
+.k-icon-droplet:before {
+    content: "\e90b";
+}
+
+.k-icon-paint-format:before {
+    content: "\e90c";
+}
+
+.k-icon-image:before {
+    content: "\e90d";
+}
+
+.k-icon-images:before {
+    content: "\e90e";
+}
+
+.k-icon-music:before {
+    content: "\e911";
+}
+
+.k-icon-film:before {
+    content: "\e913";
+}
+
+.k-icon-books:before {
+    content: "\e920";
+}
+
+.k-icon-profile:before {
+    content: "\e923";
+}
+
+.k-icon-file-empty:before {
+    content: "\e924";
+}
+
+.k-icon-files-empty:before {
+    content: "\e925";
+}
+
+.k-icon-file-text2:before {
+    content: "\e926";
+}
+
+.k-icon-file-picture:before {
+    content: "\e927";
+}
+
+.k-icon-file-music:before {
+    content: "\e928";
+}
+
+.k-icon-file-play:before {
+    content: "\e929";
+}
+
+.k-icon-file-video:before {
+    content: "\e92a";
+}
+
+.k-icon-file-zip:before {
+    content: "\e92b";
+}
+
+.k-icon-copy:before {
+    content: "\e92c";
+}
+
+.k-icon-paste:before {
+    content: "\e92d";
+}
+
+.k-icon-folder:before {
+    content: "\e92f";
+}
+
+.k-icon-folder-open:before {
+    content: "\e930";
+}
+
+.k-icon-folder-plus:before {
+    content: "\e931";
+}
+
+.k-icon-folder-minus:before {
+    content: "\e932";
+}
+
+.k-icon-floppy-disk:before {
+    content: "\e962";
+}
+
+.k-icon-undo:before {
+    content: "\e965";
+}
+
+.k-icon-redo:before {
+    content: "\e966";
+}
+
+.k-icon-undo2:before {
+    content: "\e967";
+}
+
+.k-icon-redo2:before {
+    content: "\e968";
+}
+
+.k-icon-forward:before {
+    content: "\e969";
+}
+
+.k-icon-reply:before {
+    content: "\e96a";
+}
+
+.k-icon-spinner:before {
+    content: "\e97a";
+}
+
+.k-icon-spinner2:before {
+    content: "\e97b";
+}
+
+.k-icon-spinner3:before {
+    content: "\e97c";
+}
+
+.k-icon-spinner4:before {
+    content: "\e97d";
+}
+
+.k-icon-spinner5:before {
+    content: "\e97e";
+}
+
+.k-icon-spinner6:before {
+    content: "\e97f";
+}
+
+.k-icon-spinner7:before {
+    content: "\e980";
+}
+
+.k-icon-spinner8:before {
+    content: "\e981";
+}
+
+.k-icon-spinner9:before {
+    content: "\e982";
+}
+
+.k-icon-spinner10:before {
+    content: "\e983";
+}
+
+.k-icon-spinner11:before {
+    content: "\e984";
+}
+
+.k-icon-binoculars:before {
+    content: "\e985";
+}
+
+.k-icon-search:before {
+    content: "\e986";
+}
+
+.k-icon-zoom-in:before {
+    content: "\e987";
+}
+
+.k-icon-zoom-out:before {
+    content: "\e988";
+}
+
+.k-icon-enlarge:before {
+    content: "\e989";
+}
+
+.k-icon-shrink:before {
+    content: "\e98a";
+}
+
+.k-icon-enlarge2:before {
+    content: "\e98b";
+}
+
+.k-icon-shrink2:before {
+    content: "\e98c";
+}
+
+.k-icon-key:before {
+    content: "\e98d";
+}
+
+.k-icon-key2:before {
+    content: "\e98e";
+}
+
+.k-icon-lock:before {
+    content: "\e98f";
+}
+
+.k-icon-unlocked:before {
+    content: "\e990";
+}
+
+.k-icon-wrench:before {
+    content: "\e991";
+}
+
+.k-icon-equalizer:before {
+    content: "\e992";
+}
+
+.k-icon-equalizer2:before {
+    content: "\e993";
+}
+
+.k-icon-cog:before {
+    content: "\e994";
+}
+
+.k-icon-cogs:before {
+    content: "\e995";
+}
+
+.k-icon-hammer:before {
+    content: "\e996";
+}
+
+.k-icon-leaf:before {
+    content: "\e9a4";
+}
+
+.k-icon-switch:before {
+    content: "\e9b6";
+}
+
+.k-icon-menu2:before {
+    content: "\e9be";
+}
+
+.k-icon-menu3:before {
+    content: "\e9bf";
+}
+
+.k-icon-menu4:before {
+    content: "\e9c0";
+}
+
+.k-icon-cloud:before {
+    content: "\e9c1";
+}
+
+.k-icon-cloud-download:before {
+    content: "\e9c2";
+}
+
+.k-icon-cloud-upload:before {
+    content: "\e9c3";
+}
+
+.k-icon-cloud-check:before {
+    content: "\e9c4";
+}
+
+.k-icon-notification:before {
+    content: "\ea08";
+}
+
+.k-icon-question:before {
+    content: "\ea09";
+}
+
+.k-icon-plus:before {
+    content: "\ea0a";
+}
+
+.k-icon-minus:before {
+    content: "\ea0b";
+}
+
+.k-icon-info:before {
+    content: "\ea0c";
+}
+
+.k-icon-cancel-circle:before {
+    content: "\ea0d";
+}
+
+.k-icon-blocked:before {
+    content: "\ea0e";
+}
+
+.k-icon-cross:before {
+    content: "\ea0f";
+}
+
+.k-icon-checkmark:before {
+    content: "\ea10";
+}
+
+.k-icon-checkmark2:before {
+    content: "\ea11";
+}
+
+.k-icon-loop2:before {
+    content: "\ea2e";
+}
+
+.k-icon-infinite:before {
+    content: "\ea2f";
+}
+
+.k-icon-arrow-up-left:before {
+    content: "\ea31";
+}
+
+.k-icon-arrow-up:before {
+    content: "\ea32";
+}
+
+.k-icon-arrow-up-right:before {
+    content: "\ea33";
+}
+
+.k-icon-arrow-right:before {
+    content: "\ea34";
+}
+
+.k-icon-arrow-down-right:before {
+    content: "\ea35";
+}
+
+.k-icon-arrow-down:before {
+    content: "\ea36";
+}
+
+.k-icon-arrow-down-left:before {
+    content: "\ea37";
+}
+
+.k-icon-arrow-left:before {
+    content: "\ea38";
+}
+
+.k-icon-arrow-up-left2:before {
+    content: "\ea39";
+}
+
+.k-icon-arrow-up2:before {
+    content: "\ea3a";
+}
+
+.k-icon-arrow-up-right2:before {
+    content: "\ea3b";
+}
+
+.k-icon-arrow-right2:before {
+    content: "\ea3c";
+}
+
+.k-icon-arrow-down-right2:before {
+    content: "\ea3d";
+}
+
+.k-icon-arrow-down2:before {
+    content: "\ea3e";
+}
+
+.k-icon-arrow-down-left2:before {
+    content: "\ea3f";
+}
+
+.k-icon-arrow-left2:before {
+    content: "\ea40";
+}
+
+.k-icon-circle-up:before {
+    content: "\ea41";
+}
+
+.k-icon-circle-right:before {
+    content: "\ea42";
+}
+
+.k-icon-circle-down:before {
+    content: "\ea43";
+}
+
+.k-icon-circle-left:before {
+    content: "\ea44";
+}
+
+.k-icon-sort-alpha-asc:before {
+    content: "\ea48";
+}
+
+.k-icon-sort-alpha-desc:before {
+    content: "\ea49";
+}
+
+.k-icon-shift:before {
+    content: "\ea4f";
+}
+
+.k-icon-ctrl:before {
+    content: "\ea50";
+}
+
+.k-icon-checkbox-checked:before {
+    content: "\ea52";
+}
+
+.k-icon-checkbox-unchecked:before {
+    content: "\ea53";
+}
+
+.k-icon-radio-checked:before {
+    content: "\ea54";
+}
+
+.k-icon-radio-checked2:before {
+    content: "\ea55";
+}
+
+.k-icon-radio-unchecked:before {
+    content: "\ea56";
+}
+
+.k-icon-scissors:before {
+    content: "\ea5a";
+}
+
+.k-icon-filter:before {
+    content: "\ea5b";
+}
+
+.k-icon-embed:before {
+    content: "\ea7f";
+}
+
+.k-icon-embed2:before {
+    content: "\ea80";
+}
+
+.k-icon-github:before {
+    content: "\eab1";
+}
+
+.k-icon-github4:before {
+    content: "\eab4";
+}
+
+.k-icon-html5:before {
+    content: "\eadf";
+}
+
+.k-icon-html52:before {
+    content: "\eae0";
+}
+
+.k-icon-css3:before {
+    content: "\eae1";
+}

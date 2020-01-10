@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{31B41DE2-36F0-476E-A26F-AD9B4A4DC050}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Parnian</RootNamespace>
+    <AssemblyName>Parnian</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="MD.PersianDateTime, Version=3.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MD.PersianDateTime.3.8.1\lib\MD.PersianDateTime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\EmailService.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\OwinStartup.cs" />
+    <Compile Include="Areas\Kaveh\Controllers\FileManagerController.cs" />
+    <Compile Include="Areas\Kaveh\KavehAreaRegistration.cs" />
+    <Compile Include="Areas\Kaveh\Models\KCore.cs" />
+    <Compile Include="Areas\Kaveh\Models\KFileSystemInfo.cs" />
+    <Compile Include="Areas\Kaveh\Models\KNavPaneItem.cs" />
+    <Compile Include="Areas\Kaveh\Models\KResult.cs" />
+    <Compile Include="Areas\Kaveh\Models\KSelectListItem.cs" />
+    <Compile Include="Areas\Kaveh\Models\KView.cs" />
+    <Compile Include="Areas\Kaveh\Models\KViewBoxContent.cs" />
+    <Compile Include="Controllers\AccountController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\GraphicController.cs" />
+    <Compile Include="Controllers\HomeController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\JournalController.cs" />
+    <Compile Include="Controllers\ManageController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\SlideController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912261455094_Initial.cs" />
+    <Compile Include="Migrations\201912261455094_Initial.Designer.cs">
+      <DependentUpon>201912261455094_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\DataAccessLayer\DatabaseContext.cs" />
+    <Compile Include="Models\DataAccessLayer\Initializer.cs" />
+    <Compile Include="Models\MotherAndChildren.cs" />
+    <Compile Include="Models\Setting.cs" />
+    <Compile Include="Models\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\ViewModels\HomeViewModels.cs" />
+    <Compile Include="Models\ViewModels\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Files\Categories\item1.jpg" />
+    <Content Include="App_Files\Categories\item2.jpg" />
+    <Content Include="App_Files\Categories\item3.jpg" />
+    <Content Include="App_Files\Categories\item4.jpg" />
+    <Content Include="App_Files\Categories\item5.jpg" />
+    <Content Include="App_Files\Graphics\poster1.jpg" />
+    <Content Include="App_Files\Graphics\poster2.jpg" />
+    <Content Include="App_Files\Graphics\poster3.jpg" />
+    <Content Include="App_Files\Graphics\poster4.jpg" />
+    <Content Include="App_Files\Graphics\poster5.jpg" />
+    <Content Include="App_Files\Graphics\poster6.jpg" />
+    <Content Include="App_Files\Graphics\poster7.jpeg" />
+    <Content Include="App_Files\Journals\Axolotl.png" />
+    <Content Include="App_Files\Slides\inaro.jpg" />
+    <Content Include="App_Files\Slides\kar.jpg" />
+    <Content Include="App_Files\Slides\pishtaz.jpg" />
+    <Content Include="App_Files\Slides\yagheshiha.jpg" />
+    <Content Include="App_Files\UI\bg.jpg" />
+    <Content Include="App_Files\UI\error.jpg" />
+    <Content Include="App_Files\UI\logo.png" />
+    <Content Include="App_Files\UI\logo2.png" />
+    <Content Include="App_Files\UI\bg1.jpg" />
+    <Content Include="App_Files\UI\telegram-logo-sm.png" />
+    <Content Include="App_Files\UI\telegram-logo.png" />
+    <Content Include="Content\bootstrap%403.3.5\css\bootstrap-my-rtl.css" />
+    <Content Include="Content\bootstrap%403.3.5\css\bootstrap-my-rtl.min.css" />
+    <Content Include="Content\bootstrap%403.3.5\css\bootstrap.css" />
+    <Content Include="Content\bootstrap%403.3.5\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap%403.3.5\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap%403.3.5\js\bootstrap.js" />
+    <Content Include="Content\bootstrap%403.3.5\js\bootstrap.min.js" />
+    <Content Include="Content\ckeditor%404.4.3\adapters\jquery.js" />
+    <Content Include="Content\ckeditor%404.4.3\build-config.js" />
+    <Content Include="Content\ckeditor%404.4.3\ckeditor.js" />
+    <Content Include="Content\ckeditor%404.4.3\config.js" />
+    <Content Include="Content\ckeditor%404.4.3\contents.css" />
+    <Content Include="Content\ckeditor%404.4.3\lang\en.js" />
+    <Content Include="Content\ckeditor%404.4.3\lang\fa.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\about\dialogs\about.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\div\dialogs\div.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\find\dialogs\find.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\flash\dialogs\flash.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\flash\images\placeholder.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\forms\dialogs\button.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\forms\dialogs\form.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\forms\dialogs\radio.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\forms\dialogs\select.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\forms\dialogs\textarea.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\forms\dialogs\textfield.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\icons.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\icons_hidpi.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\iframe\dialogs\iframe.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\iframe\images\placeholder.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\image\dialogs\image.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\image\images\noimage.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\link\dialogs\anchor.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\link\dialogs\link.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\link\images\anchor.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\magicline\images\icon.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\pastefromword\filter\default.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\preview\preview.html" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\scayt\dialogs\options.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_address.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_div.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_h1.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_h2.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_h3.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_h4.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_h5.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_h6.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_p.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\showblocks\images\block_pre.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\angel_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\angry_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\broken_heart.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\confused_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\cry_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\devil_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\embarrassed_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\embarrassed_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\envelope.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\envelope.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\heart.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\heart.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\kiss.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\kiss.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\lightbulb.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\omg_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\regular_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\sad_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\shades_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\teeth_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\thumbs_down.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\thumbs_up.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\tongue_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\tongue_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\whatchutalkingabout_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\smiley\images\wink_smile.png" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\table\dialogs\table.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\templates\dialogs\templates.css" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\templates\dialogs\templates.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\templates\templates\default.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\templates\templates\images\template1.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\templates\templates\images\template2.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\templates\templates\images\template3.gif" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Content\ckeditor%404.4.3\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\dev\icons16.svg" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\dev\icons32.svg" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\dialog.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\dialog_ie.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\dialog_ie7.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\dialog_ie8.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\dialog_iequirks.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\dialog_opera.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\editor.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\editor_gecko.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\editor_ie.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\editor_ie7.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\editor_ie8.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\editor_iequirks.css" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\icons.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\icons_hidpi.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\images\arrow.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\images\close.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\images\hidpi\close.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\images\hidpi\lock-open.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\images\hidpi\lock.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\images\hidpi\refresh.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\images\lock-open.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\images\lock.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\images\refresh.png" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\skin.js" />
+    <Content Include="Content\ckeditor%404.4.3\styles.js" />
+    <Content Include="Content\dinar-font\dinar.css" />
+    <Content Include="Content\dropzone%404.2.0\basic.css" />
+    <Content Include="Content\dropzone%404.2.0\basic.min.css" />
+    <Content Include="Content\dropzone%404.2.0\dropzone-amd-module.js" />
+    <Content Include="Content\dropzone%404.2.0\dropzone-amd-module.min.js" />
+    <Content Include="Content\dropzone%404.2.0\dropzone.css" />
+    <Content Include="Content\dropzone%404.2.0\dropzone.js" />
+    <Content Include="Content\dropzone%404.2.0\dropzone.min.css" />
+    <Content Include="Content\dropzone%404.2.0\dropzone.min.js" />
+    <Content Include="Content\dropzone%404.2.0\dropzone.original.js" />
+    <Content Include="Content\dropzone%404.2.0\dropzone.original.min.js" />
+    <None Include="bundleconfig.json" />
+    <None Include="Content\jquery%402.1.4\jquery.intellisense.js" />
+    <Content Include="Content\jquery%402.1.4\jquery.js" />
+    <Content Include="Content\jquery%402.1.4\jquery.min.js" />
+    <None Include="Content\jquery.validate%401.14.0\jquery.validate-vsdoc.js" />
+    <Content Include="Content\jquery.ui%401.10.4\jquery.ui.core.min.js">
+      <DependentUpon>jquery.ui.core.js</DependentUpon>
+    </Content>
+    <Content Include="Content\jquery.ui%401.10.4\jquery.ui.mouse.min.js">
+      <DependentUpon>jquery.ui.mouse.js</DependentUpon>
+    </Content>
+    <Content Include="Content\jquery.ui%401.10.4\jquery.ui.sortable.min.js">
+      <DependentUpon>jquery.ui.sortable.js</DependentUpon>
+    </Content>
+    <Content Include="Content\jquery.ui%401.10.4\jquery.ui.widget.min.js">
+      <DependentUpon>jquery.ui.widget.js</DependentUpon>
+    </Content>
+    <Content Include="Content\jquery.validate%401.14.0\jquery.validate.js" />
+    <Content Include="Content\jquery.validate%401.14.0\jquery.validate.min.js" />
+    <Content Include="Content\jquery.validate.unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\jquery.validate.unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\kaveh\img\types\aspx.png" />
+    <Content Include="Content\kaveh\img\types\html.png" />
+    <Content Include="Content\kaveh\img\types\json.png" />
+    <Content Include="Content\kaveh\img\upload.png" />
+    <Content Include="Content\kaveh\img\upload2.png" />
+    <Content Include="Content\kaveh\kaveh.min.css">
+      <DependentUpon>kaveh.css</DependentUpon>
+    </Content>
+    <Content Include="Content\kaveh\kaveh.min.js">
+      <DependentUpon>kaveh.js</DependentUpon>
+    </Content>
+    <Content Include="Content\parnian\css\account.css" />
+    <Content Include="Content\parnian\css\account.min.css">
+      <DependentUpon>account.css</DependentUpon>
+    </Content>
+    <Content Include="Content\parnian\css\admin.css" />
+    <Content Include="Content\parnian\css\admin.min.css">
+      <DependentUpon>admin.css</DependentUpon>
+    </Content>
+    <Content Include="Content\parnian\css\graphic-gallery.css" />
+    <Content Include="Content\parnian\css\graphic-gallery.min.css">
+      <DependentUpon>graphic-gallery.css</DependentUpon>
+    </Content>
+    <Content Include="Content\parnian\css\home-index.css" />
+    <Content Include="Content\bootstrap%403.3.5\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap%403.3.5\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap%403.3.5\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap%403.3.5\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bootstrap%403.3.5\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\ckeditor%404.4.3\skins\bootstrapck\dev\locations.json" />
+    <Content Include="Areas\Kaveh\Views\FileManager\_AddressBar.cshtml" />
+    <Content Include="Areas\Kaveh\Views\FileManager\_ChooseBar.cshtml" />
+    <Content Include="Areas\Kaveh\Views\FileManager\_FileManager.cshtml" />
+    <Content Include="Areas\Kaveh\Views\FileManager\_NavPane.cshtml" />
+    <Content Include="Areas\Kaveh\Views\FileManager\_StatusBar.cshtml" />
+    <Content Include="Areas\Kaveh\Views\FileManager\_ToolBar.cshtml" />
+    <Content Include="Areas\Kaveh\Views\FileManager\_Upload.cshtml" />
+    <Content Include="Areas\Kaveh\Views\FileManager\_ViewBox.cshtml" />
+    <Content Include="Areas\Kaveh\Views\web.config" />
+    <Content Include="Content\jquery%402.1.4\jquery.min.map" />
+    <Content Include="Content\parnian\css\home-index.min.css">
+      <DependentUpon>home-index.css</DependentUpon>
+    </Content>
+    <Content Include="Content\parnian\css\site.css" />
+    <Content Include="Content\parnian\css\site.min.css">
+      <DependentUpon>site.css</DependentUpon>
+    </Content>
+    <Content Include="Content\parnian\css\video-gallery.css" />
+    <Content Include="Content\dinar-font\dinar.svg" />
+    <Content Include="Content\parnian\css\video-gallery.min.css">
+      <DependentUpon>video-gallery.css</DependentUpon>
+    </Content>
+    <Content Include="Content\parnian\js\admindex.min.js">
+      <DependentUpon>admindex.js</DependentUpon>
+    </Content>
+    <Content Include="Content\parnian\js\contact.min.js">
+      <DependentUpon>contact.js</DependentUpon>
+    </Content>
+    <Content Include="Content\parnian\js\site.min.js">
+      <DependentUpon>site.js</DependentUpon>
+    </Content>
+    <Content Include="Content\photoswipe%404.0.8\default-skin.css" />
+    <Content Include="Content\photoswipe%404.0.8\default-skin.min.css">
+      <DependentUpon>default-skin.css</DependentUpon>
+    </Content>
+    <Content Include="Content\photoswipe%404.0.8\default-skin.png" />
+    <Content Include="Content\photoswipe%404.0.8\default-skin.svg" />
+    <Content Include="Content\photoswipe%404.0.8\JavaScript1.js" />
+    <Content Include="Content\photoswipe%404.0.8\photoswipe-ui-default.min.js" />
+    <Content Include="Content\photoswipe%404.0.8\photoswipe.css" />
+    <Content Include="Content\photoswipe%404.0.8\photoswipe.min.css">
+      <DependentUpon>photoswipe.css</DependentUpon>
+    </Content>
+    <Content Include="Content\photoswipe%404.0.8\photoswipe.min.js" />
+    <Content Include="Content\photoswipe%404.0.8\preloader.gif" />
+    <Content Include="Content\vazir-font%4018.0.0\vazir.css" />
+    <Content Include="Content\vazir-font%4018.0.0\vazir.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="googled7af4d76c333b653.html" />
+    <Content Include="Content\kaveh\img\types\config.png" />
+    <Content Include="Content\kaveh\img\types\cSharp.png" />
+    <Content Include="Content\kaveh\img\types\cshtml.PNG" />
+    <Content Include="Content\kaveh\img\types\dll.png" />
+    <Content Include="Content\kaveh\img\types\exel.png" />
+    <Content Include="Content\kaveh\img\types\firefox.png" />
+    <Content Include="Content\kaveh\img\types\folder.png" />
+    <Content Include="Content\kaveh\img\types\font.png" />
+    <Content Include="Content\kaveh\img\types\ie.png" />
+    <Content Include="Content\kaveh\img\types\javascript.png" />
+    <Content Include="Content\kaveh\img\types\movie.png" />
+    <Content Include="Content\kaveh\img\types\other.png" />
+    <Content Include="Content\kaveh\img\types\pdf.png" />
+    <Content Include="Content\kaveh\img\types\photoshop.png" />
+    <Content Include="Content\kaveh\img\types\powerpoint.png" />
+    <Content Include="Content\kaveh\img\types\program.png" />
+    <Content Include="Content\kaveh\img\types\sound.png" />
+    <Content Include="Content\kaveh\img\types\stylesheet.PNG" />
+    <Content Include="Content\kaveh\img\types\text.png" />
+    <Content Include="Content\kaveh\img\types\winrar.png" />
+    <Content Include="Content\kaveh\img\types\word.png" />
+    <Content Include="Content\kaveh\kaveh.css" />
+    <Content Include="Content\kaveh\kaveh.js" />
+    <Content Include="Content\lightslider%401.1.5\css\lightslider.css" />
+    <Content Include="Content\lightslider%401.1.5\css\lightslider.min.css" />
+    <Content Include="Content\lightslider%401.1.5\img\controls.png" />
+    <Content Include="Content\lightslider%401.1.5\js\lightslider.js" />
+    <Content Include="Content\lightslider%401.1.5\js\lightslider.min.js" />
+    <Content Include="robots.txt" />
+    <Content Include="Content\parnian\js\admindex.js" />
+    <Content Include="Content\bootbox%404.4.0\bootbox.min.js" />
+    <Content Include="Content\parnian\js\contact.js" />
+    <Content Include="Content\jquery.ui%401.10.4\jquery.ui.core.js" />
+    <Content Include="Content\jquery.ui%401.10.4\jquery.ui.mouse.js" />
+    <Content Include="Content\jquery.ui%401.10.4\jquery.ui.sortable.js" />
+    <Content Include="Content\jquery.ui%401.10.4\jquery.ui.widget.js" />
+    <Content Include="Content\parnian\js\site.js" />
+    <Content Include="sitemap.xml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\GraphicGallery.cshtml" />
+    <Content Include="Views\Home\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Home\VideoGallery.cshtml" />
+    <Content Include="Views\Home\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_AccountLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_ModelCreateAndEditLayout.cshtml" />
+    <Content Include="Views\Shared\_ModelIndexLayout.cshtml" />
+    <Content Include="Views\Shared\_SiteLayout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\_ViewStart.cshtml" />
+    <Content Include="Views\Category\CreateAndEdit.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Graphic\CreateAndEdit.cshtml" />
+    <Content Include="Views\Graphic\Index.cshtml" />
+    <Content Include="Views\Journal\CreateAndEdit.cshtml" />
+    <Content Include="Views\Journal\Index.cshtml" />
+    <Content Include="Views\Manage\AddUser.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\Settings.cshtml" />
+    <Content Include="Views\Manage\Statistics.cshtml" />
+    <Content Include="Views\Manage\Users.cshtml" />
+    <Content Include="Views\Manage\_ViewStart.cshtml" />
+    <Content Include="Views\Page\CreateAndEdit.cshtml" />
+    <Content Include="Views\Page\Index.cshtml" />
+    <Content Include="Views\Slide\CreateAndEdit.cshtml" />
+    <Content Include="Views\Slide\Index.cshtml" />
+    <Content Include="Views\Video\CreateAndEdit.cshtml" />
+    <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\Home\Journal.cshtml" />
+    <Content Include="Views\Manage\FileManager.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\dinar-font\dinar.eot" />
+    <Content Include="Content\dinar-font\dinar.ttf" />
+    <Content Include="Content\dinar-font\dinar.woff" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Bold.eot" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Bold.ttf" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Bold.woff" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Bold.woff2" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Light.eot" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Light.ttf" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Light.woff" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Light.woff2" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Medium.eot" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Medium.ttf" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Medium.woff" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Medium.woff2" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Thin.eot" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Thin.ttf" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Thin.woff" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir-Thin.woff2" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir.eot" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir.ttf" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir.woff" />
+    <Content Include="Content\vazir-font%4018.0.0\Vazir.woff2" />
+    <None Include="Properties\PublishProfiles\Radcom.pubxml" />
+    <None Include="Properties\PublishProfiles\ServerPars.pubxml" />
+    <None Include="Content\_references.js" />
+    <Content Include="Views\Home\JournalGallery.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Files\Pages\" />
+    <Folder Include="App_Files\Videos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912261455094_Initial.resx">
+      <DependentUpon>201912261455094_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49828</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49828/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

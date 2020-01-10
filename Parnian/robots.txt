@@ -1,0 +1,8 @@
+﻿User-agent: *
+Disallow: /App_Files
+Disallow: /bin
+Disallow: /Content
+Disallow: /Views
+Disallow: /packages.config
+Disallow: /Web.config
+Sitemap: http://www.parnianart.com/sitemap.xml

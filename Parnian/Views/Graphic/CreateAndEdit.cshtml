@@ -1,0 +1,16 @@
+﻿@model Parnian.Models.Graphic
+@{
+    Layout = "~/Views/Shared/_ModelCreateAndEditLayout.cshtml";
+    ViewBag.Object_Name = "نگاره";
+    ViewBag.Object_Plural_Name = "نگاره‌ها";
+    ViewBag.Root_Directory = "/App_Files/Graphics/";
+    ViewBag.Sidebar_Location = "graphics";
+    ViewBag.hasImage = true;
+}
+
+<div class="form-group">
+    @Html.LabelFor(model => model.categoryId, htmlAttributes: new { @class = "control-label col-sm-2" })
+    <div class="col-sm-10">
+        @Html.DropDownList("categoryId", null, new { @class = "form-control" })
+    </div>
+</div>

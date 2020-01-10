@@ -1,0 +1,27 @@
+﻿@model Parnian.Models.Journal
+@{
+    Layout = "~/Views/Shared/_ModelCreateAndEditLayout.cshtml";
+    ViewBag.Object_Name = "نوشته";
+    ViewBag.Object_Plural_Name = "نوشته‌ها";
+    ViewBag.Root_Directory = "/App_Files/Journals/";
+    ViewBag.Sidebar_Location = "journals";
+    ViewBag.hasImage = true;
+    ViewBag.imageWarning = "طول عکس باید ۴۷۰ پیکسل باشد. ارتفاع آن مهم نیست.";
+}
+
+<div class="form-group">
+    @Html.LabelFor(model => model.categoryId, htmlAttributes: new { @class = "control-label col-sm-2" })
+    <div class="col-sm-10">
+        @Html.DropDownList("categoryId", null, new { @class = "form-control" })
+    </div>
+</div>
+
+@section excerpt {
+    <div class="form-group">
+        @Html.LabelFor(model => model.excerpt, htmlAttributes: new { @class = "control-label col-sm-1 to-right" })
+        <div class="col-sm-11">
+            @Html.EditorFor(model => model.excerpt, new { htmlAttributes = new { @class = "form-control ckeditor" } })
+            @Html.ValidationMessageFor(model => model.excerpt, "", new { @class = "text-danger" })
+        </div>
+    </div>
+}

@@ -1,0 +1,50 @@
+﻿@model KView
+@*<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="panel-title">
+            مدیریت فایل
+        </div>
+    </div>*@
+    @*<div id="kaveh" class="panel-body kaveh">*@
+<div id="kaveh" class="kaveh">
+    @{
+        if (Model.hasToolBar)
+        {
+            Html.RenderPartial("_ToolBar");
+        }
+        if (Model.hasAddressBar)
+        {
+            Html.RenderPartial("_AddressBar");
+        }
+
+        var s = "k";
+        //if (Model.hasNavPane) { s += "-hasNavPane"; }
+        if (Model.hasViewBox) { s += "-hasViewBox"; }
+
+        <div class="row k-content-wrapper @(s != "k" ? s : "" )" dir="ltr">
+            @if (Model.hasViewBox)
+            {
+                Html.RenderPartial("_ViewBox");
+            }
+            @*@if (Model.hasNavPane)
+            {
+                Html.RenderPartial("_NavPane");
+            }*@
+        </div>
+        if (Model.hasStatusBar)
+        {
+            Html.RenderPartial("_StatusBar");
+        }
+
+        if (Model.hasChooseBar)
+        {
+            Html.RenderPartial("_ChooseBar");
+        }
+        if (Model.hasUploadForm)
+        {
+            Html.RenderPartial("_Upload");
+        }
+    }
+</div>
+
+@*</div>*@

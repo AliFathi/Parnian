@@ -1,0 +1,41 @@
+﻿<div dir="ltr" class="kaveh">
+    <div class="k-toolbar">
+        <div title="بستن این پنجره" class="k-bar-btn k-bar-btn-close">
+            <span class="k-icon-switch"></span>
+        </div>
+        <div title="بارگذاری دوباره" class="k-bar-btn k-bar-btn-refresh">
+            <span class="k-icon-loop2"></span>
+        </div>
+    </div>
+    <div class="k-content">
+        <div class="k-ribbon"> <!-- current location --> </div>
+        <div class="k-address-bar">
+            @*<div class="h back"><span class="k-icon-circle-left"></span></div>
+                <div class="h forth"><span class="k-icon-circle-right"></span></div>*@
+        </div>
+        <div class="k-explorer">
+            <div class="k-pane">
+                <div>
+                    <!--dirs-->
+                </div>
+            </div>
+            <div class="k-box">
+                <div>
+                    <!-- files -->
+                </div>
+            </div>
+        </div>
+        <div class="k-footer">
+            <div class="k-upload">
+                <form data-ajax-method="POST" data-ajax="true" method="POST" enctype="multipart/form-data" action="/Kaveh/Upload">
+                    <div class="k-upload-limit"> <!-- upload size limit --> </div>
+                    <div class="k-message"> <!-- upload message --> </div>
+                    <input multiple="multiple" name="file" class="k-file-input" type="file">
+                    <input role="button" value="آپلود" type="submit">
+                    <progress max="100" value="0"></progress>
+                    <span class="k-progress"></span>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

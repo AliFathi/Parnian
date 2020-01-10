@@ -1,0 +1,247 @@
+﻿@model Parnian.Models.Mother
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = (ViewBag.isedit) ? "ویرایش " + ViewBag.Object_Name : "افزودن " + ViewBag.Object_Name + " جدید";
+}
+
+@section head {
+    <link href="~/Content/dropzone@4.2.0/basic.min.css" rel="stylesheet" />
+    <link href="~/Content/dropzone@4.2.0/dropzone.min.css" rel="stylesheet" />
+    <link href="~/Content/kaveh/kaveh.min.css?v=3" rel="stylesheet" />
+    <style>
+        img {
+            margin: 0 auto 20px auto;
+        }
+    </style>
+    <script src="~/Content/ckeditor@4.4.3/ckeditor.js"></script>
+    @RenderSection("head", required: false)
+}
+
+@section tools {
+    @if (ViewBag.isedit)
+    {
+        <p>شناسه: @Model.id، ایجادشده توسط @ViewBag.creator در @Model.creationTime</p>
+        if (String.IsNullOrEmpty(Model.lastEditTime))
+        {
+            <p>تا الآن ویرایش نشده</p>
+        }
+        else
+        {
+            <p>آخرین ویرایش به دست @ViewBag.editorname در @Model.lastEditTime</p>
+        }
+    }
+}
+
+<div class="row">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.AntiForgeryToken()
+        if (ViewBag.isedit)
+        {
+            @Html.HiddenFor(model => model.id)
+            @Html.HiddenFor(model => model.priority)
+            @Html.HiddenFor(model => model.creationTime)
+            @Html.HiddenFor(model => model.creatorName)
+        }
+
+        <div class="col-sm-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        اطلاعات اولیه
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.isHidden, htmlAttributes: new { @class = "control-label col-sm-3" })
+                                        <div class="col-sm-1">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.isHidden)
+                                            </div>
+                                        </div>
+
+                                        @RenderSection("pretitle", false)
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                        <div class="col-sm-10">
+                                            @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        انتخاب تصویر
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="btn-group btn-group-sm">
+                                    <button id="select-img" class="btn btn-primary" type="button">انتخاب تصویر</button>
+                                    <button id="remove-img" class="btn btn-default" type="button"><span class="glyphicon glyphicon-trash"></span> حذف تصویر</button>
+                                </div>
+                                <br />
+                                @if (ViewBag.imageWarning != null)
+                                {
+                                    <p class="alert alert-warning">@ViewBag.imageWarning</p>
+                                }
+                                @if (String.IsNullOrEmpty(Model.imageName))
+                                {
+                                    <img src="" id="selected-img" class="img-thumbnail" style="display:none;" />
+                                }
+                                else
+                                {
+                                    <img src="@Model.imageName" id="selected-img" class="img-thumbnail" style="display:block;" />
+                                }
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.imageName, htmlAttributes: new { @class = "control-label col-sm-4" })
+                                        <div class="col-sm-8">
+                                            @Html.EditorFor(model => model.imageName, new { htmlAttributes = new { @class = "form-control", dir = "ltr" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.imageSize, htmlAttributes: new { @class = "control-label col-sm-4" })
+                                        <div class="col-sm-8">
+                                            @Html.EditorFor(model => model.imageSize, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", dir = "ltr" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @RenderSection("image", false)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        شرح
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-horizontal">
+                                    @RenderSection("excerpt", false)
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                                            @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control ckeditor" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-1 col-sm-11">
+                                            <button type="submit" class="btn btn-primary to-right"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;@((ViewBag.isedit) ? "ذخيره" : "ساختن")</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <a href="@Url.Action("Index")"><span class="glyphicon glyphicon-arrow-right"></span>&nbsp; بازگشت به لیست @ViewBag.Object_Plural_Name</a>
+    </div>
+</div>
+
+@section bodyBeforeScripts{
+    <div id="kfm-modal" class="modal kaveh-modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="بستن"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">انتخاب فایل</h4>
+                </div>
+                <div id="kfm-wrapper" class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script src="~/Content/jquery.validate@1.14.0/jquery.validate.min.js"></script>
+    <script src="~/Content/jquery.validate.unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/dropzone@4.2.0/dropzone.min.js"></script>
+    <script src="~/Content/kaveh/kaveh.min.js?v=2"></script>
+    <script>
+        $(document).ready(function () {
+            var _kfmUrl = "@Url.Action("_Partial", "FileManager", new { area = "Kaveh" })";
+            var _rootDierctory = "@ViewBag.Root_Directory";
+            $("#select-img").on("click", function () {
+                var modal = $("#kfm-modal");
+
+                $("#kfm-wrapper").load(_kfmUrl, function () {
+                    kfm = new KavehFileManager({
+                        // initialize
+                        closeAfterSelect: true,
+                        home: _rootDierctory,
+                        id: "kaveh",
+                        selectFile: false,
+                        modalId: "kfm-modal",
+                        onchoose: function (list) {
+                            var file = list[0],
+                                img = document.getElementById("selected-img");
+                            img.src = file.path;
+                            img.style.display = "block";
+                            document.getElementById("imageName").value = file.path;
+                            document.getElementById("imageSize").value = file.imageDimensions;
+                            modal.modal("hide");
+                        },
+                        oncancel: function () {
+                            modal.modal("hide");
+                        }
+                    });
+                });
+
+                modal.modal("show");
+            });
+
+            $("#remove-img").on("click", function () {
+                var img = document.getElementById("selected-img");
+                img.src = "";
+                img.style.display = "none";
+                document.getElementById("imageName").value = "";
+                document.getElementById("imageSize").value = "";
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+}

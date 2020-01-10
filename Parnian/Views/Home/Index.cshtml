@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Parnian.Models.Category>
+
+@{ ViewBag.Title = "خانه"; }
+
+@section head {
+    <link href="~/Content/parnian/css/home-index.min.css?v=1" rel="stylesheet" />
+}
+
+<main class="row">
+    @if (Model.Count() != 0)
+    {
+        foreach (var c in Model)
+        {
+            <div class="col-sm-3 item-holder">
+                <div class="item">
+                    <h3><a href="@Url.Action("Gallery", new { id = c.id})">@c.title</a></h3>
+                    <a href="@Url.Action("Gallery", new { id = c.id})">
+                        <div style="background-image: url('@c.imageName');"></div>
+                    </a>
+                </div>
+            </div>
+        }
+    }
+</main>

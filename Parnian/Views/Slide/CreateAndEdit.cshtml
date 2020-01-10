@@ -1,0 +1,22 @@
+﻿@model Parnian.Models.Slide
+@{
+    Layout = "~/Views/Shared/_ModelCreateAndEditLayout.cshtml";
+    ViewBag.Object_Name = "اسلاید";
+    ViewBag.Object_Plural_Name = "‌اسلایدها";
+    ViewBag.Root_Directory = "/App_Files/Slides/";
+    ViewBag.Sidebar_Location = "slides";
+    ViewBag.hasImage = true;
+    ViewBag.imageWarning = "عکس باید ۹۶۰ در ۳۷۰ پیکسل باشد.";
+}
+
+<div class="form-group">
+    @Html.LabelFor(model => model.url, htmlAttributes: new { @class = "control-label col-sm-2" })
+    <div class="col-sm-10">
+        @Html.EditorFor(model => model.url, new { htmlAttributes = new { @class = "form-control", dir = "ltr" } })
+    </div>
+    <div class="col-sm-12">
+        <p class="alert alert-warning">
+            آدرس کامل مانند: http://www.parnianart.com
+        </p>
+    </div>
+</div>

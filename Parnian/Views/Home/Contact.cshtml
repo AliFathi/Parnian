@@ -1,0 +1,100 @@
+﻿@model Parnian.Models.Email
+
+@{ ViewBag.Title = "تماس با ما"; }
+
+@section head{
+    <style>
+        #gmap_canvas {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        #gmap_canvas img {
+            max-width: none !important;
+            background: none !important;
+        }
+    </style>
+}
+<main class="row">
+    <section class="col-sm-12 heading">
+        <h2>تماس با ما</h2>
+    </section>
+    <div class="col-sm-6">
+        <address>
+            <span class="glyphicon glyphicon-map-marker"></span>&nbsp;
+            نشانی :&nbsp;
+            تهران، خیابان انقلاب، خیابان ابوریحان، خیابان نظری، پلاک ۳۶، طبقه‌ی ۴.
+        </address>
+        <address>
+            <span class="glyphicon glyphicon-phone"></span>&nbsp;
+            همراه :‌&nbsp;
+            ۰۹۱۲۳۴۹۶۶۳۹
+            <br />
+            <span class="glyphicon glyphicon-phone-alt"></span>&nbsp;
+            تلفن :‌&nbsp;
+            ۶۶۴۷۶۵۶۰
+        </address>
+    </div>
+    <div class="col-sm-6">
+        <div id="gmap_canvas"></div>
+    </div>
+
+    <div class="col-sm-12">
+        @using (Ajax.BeginForm("Contact", "Home", null, new AjaxOptions() { HttpMethod = "POST" }, new { id = "emailForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <p class="h4">نوشتن پیام</p>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.senderName, htmlAttributes: new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.EditorFor(model => model.senderName, new { htmlAttributes = new { @class = "form-control", tabindex = "2", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.senderName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.senderEmail, htmlAttributes: new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.EditorFor(model => model.senderEmail, new { htmlAttributes = new { @class = "form-control", tabindex = "3", required = "required", type = "email" } })
+                        @Html.ValidationMessageFor(model => model.senderEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.subject, htmlAttributes: new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.EditorFor(model => model.subject, new { htmlAttributes = new { @class = "form-control", tabindex = "1", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.subject, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.text, htmlAttributes: new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-8">
+                        @Html.EditorFor(model => model.text, new { htmlAttributes = new { @class = "form-control", tabindex = "4", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.text, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <div class="btn-group" role="group" aria-label="">
+                            <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-send"></span>&nbsp; بفرست</button>
+                            <button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-erase"></span>&nbsp; پاک کن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</main>
+
+@section scripts {
+    <script src="~/Content/jquery.validate@1.14.0/jquery.validate.min.js"></script>
+    <script src="~/Content/jquery.validate.unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/bootbox@4.4.0/bootbox.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="~/Content/parnian/js/contact.min.js?v=1"></script>
+}

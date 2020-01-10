@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Parnian.Models.Mother>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var sortkey = ViewBag.sortkey;
+}
+
+@section head {
+    @RenderSection("head", required: false)
+}
+
+@section tools {
+    @RenderSection("tools", required: false)
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">@ViewBag.Title</div>
+            </div>
+
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a class="btn btn-success" href="@Url.Action("Create")"><span class="glyphicon glyphicon-plus"></span> افزودن</a>
+                                <button type="button" id="group-do-not-show" class="btn btn-default"><span class="glyphicon glyphicon-eye-close"></span> فعلا نشان نده</button>
+                                <button type="button" id="set-priority" class="btn btn-default"><span class="glyphicon glyphicon-sort"></span> تعیین اولویت</button>
+                                <button type="button" id="group-delete" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> حذف</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-hover table-admin">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="select-all" title="انتخاب همه" />
+                        </th>
+                        <th>
+                            @Html.ActionLink(Html.DisplayNameFor(model => model.priority).ToString(), "Index", new { sortkey = sortkey.priority })
+                        </th>
+                        @if (ViewBag.hasImage)
+                        {
+                            <th class="thumbnail-holder"></th>
+                        }
+                        <th>
+                            @Html.ActionLink(Html.DisplayNameFor(model => model.title).ToString(), "Index", new { sortkey = sortkey.title })
+                        </th>
+                        @RenderSection("thead", false)
+                        <th>
+                            @Html.ActionLink(Html.DisplayNameFor(model => model.isHidden).ToString(), "Index", new { sortkey = sortkey.isHidden })
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @RenderBody()
+                </tbody>
+            </table>
+            @if (Model.Count() == 0)
+            {
+                <div class="panel-footer">
+                    <p class="alert alert-info">چیزی وجود ندارد</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/jquery.ui@1.10.4/jquery.ui.core.min.js"></script>
+    <script src="~/Content/jquery.ui@1.10.4/jquery.ui.widget.min.js"></script>
+    <script src="~/Content/jquery.ui@1.10.4/jquery.ui.mouse.min.js"></script>
+    <script src="~/Content/jquery.ui@1.10.4/jquery.ui.sortable.min.js"></script>
+    <script src="~/Content/parnian/js/admindex.min.js?v=1"></script>
+    <script>
+        $(document).ready(function () {
+            GroupAction({
+                controller: "@ViewBag.Controller",
+                entityName: "@ViewBag.Object_Name"
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+}

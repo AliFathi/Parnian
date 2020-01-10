@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Parnian.Models.Page>
+@{
+    Layout = "~/Views/Shared/_ModelIndexLayout.cshtml";
+    ViewBag.Title = "‌صفحات";
+    ViewBag.hasImage = false;
+    ViewBag.Sidebar_Location = "pages";
+    ViewBag.Controller = "Page";
+    ViewBag.Root_Directory = "/App_Files/Pages/";
+    ViewBag.Object_Name = "صفحه";
+    var sortkey = ViewBag.sortkey;
+}
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <input type="checkbox" class="group-action" data-id="@item.id" />
+        </td>
+        <td class="handle" data-id="@item.id">@item.priority</td>
+        @if ((Boolean)ViewBag.hasImage)
+        {
+            <td class="thumbnail-holder">
+                <img src="@Url.Action("Thumbnail", "FileManager", new { area = "Kaveh", path = item.imageName, width = 36 })" alt="@item.title" />
+            </td>
+        }
+        <td>
+            @Html.ActionLink(Html.DisplayFor(modelItem => item.title).ToString(), "Edit", new { id = item.id }, new { title = "ویرایش" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isHidden)
+        </td>
+    </tr>
+}

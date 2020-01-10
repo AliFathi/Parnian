@@ -1,0 +1,96 @@
+﻿@model Parnian.Models.AddUserViewModel
+@{
+    ViewBag.Title = "افزودن کاربر جدید";
+    ViewBag.Sidebar_Location = "users";
+}
+
+@section tools {
+    <p class="alert alert-warning">
+        رمز انتخابی باید حداقل ۶ حرفی باشد و در آن از حروف بزرگ
+        (مانند A)،
+        حروف کوچک
+        (مانند a)،
+        اعداد
+        (مانند 1)
+        و کاراکتری غیر از عدد و حرف
+        (مانند ?)
+        استفاده شده باشد.
+    </p>
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">افزودن کاربر جدید</h3>
+            </div>
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EnumDropDownListFor(model => model.Role, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-primary to-right"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;ساختن</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <a href="@Url.Action("Users")"><span class="glyphicon glyphicon-arrow-right"></span>&nbsp; بازگشت به لیست کاربران</a>
+    </div>
+</div>

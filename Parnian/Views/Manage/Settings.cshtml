@@ -1,0 +1,73 @@
+﻿@model Parnian.Models.SettingsViewModel
+@{
+    ViewBag.Title = "تنظیمات";
+    ViewBag.Sidebar_Location = "settings";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">تنظیمات حساب کاربری</h3>
+            </div>
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        @using (Html.BeginForm("EditUser", "Manage", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.User.Username, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.User.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.User.Username, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.User.Email, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.User.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <button type="submit" class="btn btn-primary">تایید</button>
+                                        <a href="@Url.Action("ChangePassword")" class="btn btn-default">تغییر رمز</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">تنظیمات سایت</h3>
+            </div>
+            <table class="table table-striped table-condensed table-responsive">
+                <thead>
+                    <tr>
+                        <th>ویژگی</th>
+                        <th>ارزش</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Settings)
+                    {
+                        <tr>
+                            <td dir="ltr">@item.key</td>
+                            <td>@item.value</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

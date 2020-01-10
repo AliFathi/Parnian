@@ -1,0 +1,104 @@
+[
+  {
+    "outputFileName": "Content/parnian/css/video-gallery.min.css",
+    "inputFiles": [
+      "Content/parnian/css/video-gallery.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/parnian/js/admindex.min.js",
+    "inputFiles": [
+      "Content/parnian/js/admindex.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/parnian/js/contact.min.js",
+    "inputFiles": [
+      "Content/parnian/js/contact.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/parnian/js/site.min.js",
+    "inputFiles": [
+      "Content/parnian/js/site.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/parnian/css/account.min.css",
+    "inputFiles": [
+      "Content/parnian/css/account.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/parnian/css/admin.min.css",
+    "inputFiles": [
+      "Content/parnian/css/admin.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/parnian/css/site.min.css",
+    "inputFiles": [
+      "Content/parnian/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/parnian/css/home-index.min.css",
+    "inputFiles": [
+      "Content/parnian/css/home-index.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/jquery.ui@1.10.4/jquery.ui.core.min.js",
+    "inputFiles": [
+      "Content/jquery.ui@1.10.4/jquery.ui.core.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/jquery.ui@1.10.4/jquery.ui.mouse.min.js",
+    "inputFiles": [
+      "Content/jquery.ui@1.10.4/jquery.ui.mouse.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/jquery.ui@1.10.4/jquery.ui.sortable.min.js",
+    "inputFiles": [
+      "Content/jquery.ui@1.10.4/jquery.ui.sortable.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/jquery.ui@1.10.4/jquery.ui.widget.min.js",
+    "inputFiles": [
+      "Content/jquery.ui@1.10.4/jquery.ui.widget.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/kaveh/kaveh.min.css",
+    "inputFiles": [
+      "Content/kaveh/kaveh.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/kaveh/kaveh.min.js",
+    "inputFiles": [
+      "Content/kaveh/kaveh.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/photoswipe@4.0.8/default-skin.min.css",
+    "inputFiles": [
+      "Content/photoswipe@4.0.8/default-skin.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/photoswipe@4.0.8/photoswipe.min.css",
+    "inputFiles": [
+      "Content/photoswipe@4.0.8/photoswipe.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/parnian/css/graphic-gallery.min.css",
+    "inputFiles": [
+      "Content/parnian/css/graphic-gallery.css"
+    ]
+  }
+]

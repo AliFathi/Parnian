@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Parnian.Models.Journal>
+@{
+    Layout = "~/Views/Shared/_ModelIndexLayout.cshtml";
+    ViewBag.Title = "نوشته‌ها";
+    ViewBag.hasImage = true;
+    ViewBag.Sidebar_Location = "journals";
+    ViewBag.Controller = "Journal";
+    ViewBag.Root_Directory = "/App_Files/Journals/";
+    ViewBag.Object_Name = "نوشته";
+    var sortkey = ViewBag.sortkey;
+}
+
+@section thead {
+    <th><a href="@Url.Action("Index", new { sortkey = sortkey.category })">دسته</a></th>
+}
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <input type="checkbox" class="group-action" data-id="@item.id" />
+        </td>
+        <td class="handle" data-id="@item.id">@item.priority</td>
+        @if ((Boolean)ViewBag.hasImage)
+        {
+            <td class="thumbnail-holder">
+                <img src="@Url.Action("Thumbnail", "FileManager", new { area = "Kaveh", path = item.imageName, width = 36 })" alt="@item.title" />
+                @*<img src="@Url.Action("Thumbnail", "FileManager", new { area = "Kaveh", path = ViewBag.Root_Directory + item.imageName, width = 36 })" alt="@item.title" />*@
+            </td>
+        }
+        <td>
+            @Html.ActionLink(Html.DisplayFor(modelItem => item.title).ToString(), "Edit", new { id = item.id }, new { title = "ویرایش" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isHidden)
+        </td>
+    </tr>
+}
