@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 
@@ -125,16 +126,54 @@ namespace Parnian.Controllers
         }
 
         [HttpGet]
-        public void Thumbnail(string path, int width = 51)
+        public ActionResult Thumbnail(string path, int width = 51)
         {
             var physialPath = Server.MapPath(path);
-            if (System.IO.File.Exists(physialPath))
+            if (!System.IO.File.Exists(physialPath))
+                return HttpNotFound();
+
+            var info = new FileInfo(physialPath);
+            var md5Hash = FileHasher.CalculateMD5(physialPath);
+            var lastWrite = info.LastWriteTimeUtc;
+
+            var requestedETag = Request.Headers["If-None-Match"];
+            if (requestedETag == md5Hash)
+                return new HttpStatusCodeResult(HttpStatusCode.NotModified);
+
+            var image = new WebImage(physialPath);
+            if (image.Width > width)
             {
-                var image = new WebImage(physialPath);
                 float fH = (width * image.Height) / image.Width;
-                int H = (int)Math.Floor(fH);
-                image.Resize(width, H).Crop(1, 1).Write();
+                var height = (int)Math.Floor(fH);
+                image = image.Resize(width, height).Crop(1, 1);
             }
+
+            Response.Cache.SetCacheability(HttpCacheability.ServerAndPrivate);
+            Response.Cache.SetETag(md5Hash);
+            Response.Cache.SetLastModified(lastWrite);
+
+            return File(
+                image.GetBytes(),
+                MimeMapping.GetMimeMapping(info.Name),
+                info.Name
+            );
+
+            //Response.AddOnSendingHeaders(ctx =>
+            //{
+            //    ctx.Response.Headers.Remove("accept-ranges");
+            //    ctx.Response.AppendHeader("accept-ranges", "bytes");
+
+            //    ctx.Response.Headers.Remove("cache-control");
+            //    ctx.Response.AppendHeader("cache-control", "max-age=864000"); // 10 days in seconds, see config file
+
+            //    ctx.Response.Headers.Remove("etag");
+            //    ctx.Response.AppendHeader("etag", md5Hash);
+
+            //    ctx.Response.Headers.Remove("last-modified");
+            //    ctx.Response.AppendHeader("last-modified", $"{lastWrite} GMT");
+            //});
+
+            //image.Resize(width, H).Crop(1, 1).Write();
         }
 
         [HttpGet]

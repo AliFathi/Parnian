@@ -4,6 +4,7 @@ using Parnian.Areas.Kaveh.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -257,24 +258,37 @@ namespace Parnian.Areas.Kaveh.Controllers
         }
 
         [HttpGet]
-        public void Thumbnail(string path, int width = 91)
+        public ActionResult Thumbnail(string path, int width = 91)
         {
-            string physicalPath = KCore.PhysicalPath(path);
+            var physialPath = Server.MapPath(path);
+            if (!System.IO.File.Exists(physialPath))
+                return HttpNotFound();
 
-            if (!System.IO.File.Exists(physicalPath)) return;
+            var info = new FileInfo(physialPath);
+            var md5Hash = FileHasher.CalculateMD5(physialPath);
+            var lastWrite = info.LastWriteTimeUtc;
 
-            var image = new WebImage(physicalPath);
+            var requestedETag = Request.Headers["If-None-Match"];
+            if (requestedETag == md5Hash)
+                return new HttpStatusCodeResult(HttpStatusCode.NotModified);
 
+            var image = new WebImage(physialPath);
             if (image.Width > width)
             {
                 float fH = (width * image.Height) / image.Width;
-                int H = (int)Math.Floor(fH);
-                image.Resize(width, H).Crop(1, 1).Write();
+                var height = (int)Math.Floor(fH);
+                image = image.Resize(width, height).Crop(1, 1);
             }
-            else
-            {
-                image.Write();
-            }
+
+            Response.Cache.SetCacheability(HttpCacheability.ServerAndPrivate);
+            Response.Cache.SetETag(md5Hash);
+            Response.Cache.SetLastModified(lastWrite);
+
+            return File(
+                image.GetBytes(),
+                MimeMapping.GetMimeMapping(info.Name),
+                info.Name
+            );
         }
 
         [HttpPost]
