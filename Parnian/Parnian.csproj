@@ -214,8 +214,10 @@
     <Content Include="App_Files\UI\logo.png" />
     <Content Include="App_Files\UI\logo2.png" />
     <Content Include="App_Files\UI\bg1.jpg" />
+    <Content Include="App_Files\UI\no-img.jpg" />
     <Content Include="App_Files\UI\telegram-logo-sm.png" />
     <Content Include="App_Files\UI\telegram-logo.png" />
+    <Content Include="App_Files\Videos\no-poster.jpg" />
     <Content Include="Content\bootstrap%403.3.5\css\bootstrap-my-rtl.css" />
     <Content Include="Content\bootstrap%403.3.5\css\bootstrap-my-rtl.min.css" />
     <Content Include="Content\bootstrap%403.3.5\css\bootstrap.css" />
@@ -608,7 +610,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Files\Pages\" />
-    <Folder Include="App_Files\Videos\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
