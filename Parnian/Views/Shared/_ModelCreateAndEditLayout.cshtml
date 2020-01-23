@@ -99,24 +99,20 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="btn-group btn-group-sm">
-                                    <button id="select-img" class="btn btn-primary" type="button">انتخاب تصویر</button>
-                                    <button id="remove-img" class="btn btn-default" type="button"><span class="glyphicon glyphicon-trash"></span> حذف تصویر</button>
-                                </div>
-                                <br />
-                                @if (ViewBag.imageWarning != null)
-                                {
-                                    <p class="alert alert-warning">@ViewBag.imageWarning</p>
-                                }
-                                @if (String.IsNullOrEmpty(Model.imageName))
-                                {
-                                    <img src="" id="selected-img" class="img-thumbnail" style="display:none;" />
-                                }
-                                else
-                                {
-                                    <img src="@Model.imageName" id="selected-img" class="img-thumbnail" style="display:block;" />
-                                }
                                 <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <div class="btn-group btn-group-sm pull-left">
+                                                <button id="select-img" class="btn btn-primary" type="button">انتخاب تصویر</button>
+                                                <button id="remove-img" class="btn btn-default" type="button"><span class="glyphicon glyphicon-trash"></span> حذف تصویر</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if (ViewBag.imageWarning != null)
+                                    {
+                                        <p class="alert alert-warning">@ViewBag.imageWarning</p>
+                                    }
+                                    <img src="@Model.imageName" id="selected-img" class="img-thumbnail" style="display:@(string.IsNullOrWhiteSpace(Model.imageName) ? "none": "block");" />
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.imageName, htmlAttributes: new { @class = "control-label col-sm-4" })
                                         <div class="col-sm-8">
