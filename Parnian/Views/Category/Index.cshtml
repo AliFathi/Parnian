@@ -23,9 +23,9 @@
         <td class="handle" data-id="@item.id">@item.priority</td>
         @if ((Boolean)ViewBag.hasImage)
         {
-        <td class="thumbnail-holder">
-            <img src="@Url.Action("Thumbnail", "FileManager", new { area = "Kaveh", path = item.imageName, width = 36 })" alt="@item.title" />
-        </td>
+            <td class="thumbnail-holder">
+                <img src="@Url.Thumbnail(item.imageName, 36)" alt="@item.title" />
+            </td>
         }
         <td>
             @Html.ActionLink(Html.DisplayFor(modelItem => item.title).ToString(), "Edit", new { id = item.id }, new { title = "ویرایش" })
