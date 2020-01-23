@@ -17,8 +17,8 @@
     {
         <article class="col-sm-6 video-container">
             <div class="video">
-                <div class="video-img" data-toggle="modal" data-target="#videoModal" data-video='{"title":"@video.title","poster":"@(string.IsNullOrWhiteSpace(video.imageName) ? "/App_Files/videos/no-poster.jpg" : video.imageName)","m4v":"@video.videoName_M4V","webm":"@video.videoName_WebM","ogg":"@video.videoName_Ogg","mp4":"@video.videoName_MP4"}'>
-                    <img src="@(string.IsNullOrWhiteSpace(video.imageName) ? "/App_Files/Videos/no-poster.jpg" : Url.Action("Thumbnail", new { path = video.imageName, width = 337 }))" alt="@video.title" />
+                <div class="video-img" data-toggle="modal" data-target="#videoModal" data-video='{"title":"@video.title","poster":"@video.ImageNameOrValue("/App_Files/Videos/no-poster.jpg")","m4v":"@video.videoName_M4V","webm":"@video.videoName_WebM","ogg":"@video.videoName_Ogg","mp4":"@video.videoName_MP4"}'>
+                    <img src="@video.ImageNameOrValue("/App_Files/Videos/no-poster.jpg")" alt="@video.title" />
                 </div>
                 <div class="video-desc-container">
                     <h3 class="video-title">@video.title</h3>
