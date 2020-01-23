@@ -44,6 +44,11 @@ namespace Parnian.Models
 
         [Display(Name = "پنهان باشد؟")]
         public bool isHidden { get; set; }
+
+        public string ImageNameOrValue(string value)
+        {
+            return string.IsNullOrWhiteSpace(imageName) ? value : imageName;
+        }
     }
 
     /* Page
