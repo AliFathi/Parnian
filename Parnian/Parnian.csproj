@@ -605,6 +605,7 @@
     <Content Include="Content\vazir-font%4018.0.0\Vazir.ttf" />
     <Content Include="Content\vazir-font%4018.0.0\Vazir.woff" />
     <Content Include="Content\vazir-font%4018.0.0\Vazir.woff2" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Radcom.pubxml" />
     <None Include="Properties\PublishProfiles\ServerPars.pubxml" />
     <None Include="Content\_references.js" />
